@@ -9,6 +9,7 @@
 ### Configs
 
 ```yml
+HitMarkers:
 # Whether or not the plugin is enabled.
 is_enabled: true
 # Should debug logs be enabled?
@@ -28,7 +29,7 @@ hint_target_duration: 0.7
 # Should a hint be displayed to the attacker when they kill a player?
 enable_kill_hint: true
 # Hint message for kill
-kill_hint_message: "<voffset=15em><size=34><color=red>\U0001F480</color></size></voffset>"
+kill_hint_message: <voffset=15em><size=34><color=red>\U0001F480</color></size></voffset>
 # Hint duration for kill message
 kill_hint_duration: 1
 # Should hitmarkers be displayed to SCPs?
