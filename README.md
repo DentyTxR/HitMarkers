@@ -43,17 +43,19 @@ hit_marker_size: 1
 ### Custom variables
 #### These can be used in the config to return info, These are case sensitive
 
+These are for hint_attacker_message
 | Variable Name | Returns |
 | --- | --- |
-| These are for hint_attacker_message |
 | `%TargetName%` | Target username |
 | `%TargetRole%` | Target role |
 | `%Damage%` | Damage delt |
 | `\n` | Makes a linebreak in the hint |
-| ------------------ | ------------------ |
-| These are for hint_target_message |
+
+
+These are for hint_target_message
+| Variable Name | Returns |
+| --- | --- |
 | `%AttackerName%` | Attacker username |
 | `%AttackerRole%` | Attacker role |
 | `%Damage%` | Damage delt |
 | `\n` | Makes a linebreak in the hint |
-| ------------------ | ------------------ |
