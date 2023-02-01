@@ -1,4 +1,5 @@
 ﻿using Exiled.Events.EventArgs.Player;
+using System;
 
 namespace HitMarkers
 {
@@ -8,8 +9,8 @@ namespace HitMarkers
 
         public void HurtingEvent(HurtingEventArgs ev)
         {
-            string attackerHintBuilder = _config.HintAttackerMessage.Replace("%TargetName%", ev.Player.Nickname).Replace("%TargetRole%", ev.Player.Role.ToString()).Replace("%Damage%", ev.Amount.ToString());
-            string targetHintBuilder = _config.HintTargetMessage.Replace("%AttackerName%", ev.Attacker.Nickname).Replace("%AttackerRole%", ev.Attacker.Role.ToString()).Replace("%Damage%", ev.Amount.ToString());
+            string attackerHintBuilder = _config.HintAttackerMessage.Replace("%TargetName%", ev.Player.Nickname).Replace("%TargetRole%", ev.Player.Role.ToString()).Replace("%Damage%", ev.Amount.ToString()).Replace(@"\n", Environment.NewLine);
+            string targetHintBuilder = _config.HintTargetMessage.Replace("%AttackerName%", ev.Attacker.Nickname).Replace("%AttackerRole%", ev.Attacker.Role.ToString()).Replace("%Damage%", ev.Amount.ToString()).Replace(@"\n", Environment.NewLine);
 
             if (ev.Player == null || ev.Player.IsDead || ev.Player == ev.Attacker || ev.Amount < 0)
                 return;
