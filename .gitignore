@@ -347,3 +347,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+./Properties
+/Properties
+Properties/
