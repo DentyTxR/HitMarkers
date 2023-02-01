@@ -38,7 +38,7 @@ enable_scp_hints: true
 hit_marker_size: 1
 ```
 
-#### \U0001F480 = skull emoji
+\U0001F480 = skull emoji
 
 ### Custom variables
 #### These can be used in the config to return info, These are case sensitive
