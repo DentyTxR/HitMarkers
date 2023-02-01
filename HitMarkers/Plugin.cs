@@ -14,7 +14,7 @@ namespace HitMarkers
         public override string Name { get; } = "HitMarkers";
         public override string Author { get; } = "Denty";
         public override string Prefix { get; } = "HitMarkers";
-        public override Version Version { get; } = new Version(1, 0, 0);
+        public override Version Version { get; } = new Version(1, 1, 0);
         public override Version RequiredExiledVersion { get; } = new Version(6, 0, 0);
 
 
@@ -24,6 +24,7 @@ namespace HitMarkers
             EventHandler = new EventHandler();
 
             Player.Hurting += EventHandler.HurtingEvent;
+            Player.Dying += EventHandler.DyingEvent;
 
             base.OnEnabled();
         }
@@ -32,6 +33,7 @@ namespace HitMarkers
         public override void OnDisabled()
         {
             Player.Hurting -= EventHandler.HurtingEvent;
+            Player.Dying -= EventHandler.DyingEvent;
 
             EventHandler = null;
             Singleton = null;
