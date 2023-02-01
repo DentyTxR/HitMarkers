@@ -13,8 +13,7 @@ namespace HitMarkers
 
             if (ev.Player == null || ev.Player.IsDead || ev.Player == ev.Attacker || ev.Amount < 0)
                 return;
-            if (ev.Attacker == null)
-                return;
+
             if (_config.EnableAttackerHint)
                 ev.Attacker.ShowHint(attackerHintBuilder, _config.HintAttackerDuration);
 
