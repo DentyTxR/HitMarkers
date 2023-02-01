@@ -33,7 +33,7 @@ namespace HitMarkers
         public bool EnableKillHint { get; set; } = true;
 
         [Description("Hint message for kill")]
-        public string KillHintMessage { get; set; } = @"<voffset=15em><size=34><color=red>💀</color></size></voffset>";
+        public string KillHintMessage { get; set; } = @"<voffset=15em><size=34><color=red>\U0001F480</color></size></voffset>";
 
         [Description("Hint duration for kill message")]
         public float KillHintDuration { get; set; } = 1f;
