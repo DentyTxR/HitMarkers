@@ -44,14 +44,15 @@ hit_marker_size: 1
 
 | Variable Name | Returns |
 | --- | --- |
-Attacker hint vars
+| These are for the attacker hint message |
 | `%TargetName%` | Target username |
 | `%TargetRole%` | Target role |
 | `%Damage%` | Damage |
 | `\n` | Makes a linebreak in the hint |
-| ------------------ | ------------------------------------------ |
+| ------------------ | ------------------ |
+| These are for the target hint message |
 | `%AttackerName%` | Attacker username |
 | `%AttackerRole%` | Attacker role |
 | `%Damage%` | Damage |
 | `\n` | Makes a linebreak in the hint |
-| ------------------ | ------------------------------------------ |
+| ------------------ | ------------------ |
