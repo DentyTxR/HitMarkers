@@ -1,7 +1,6 @@
 ﻿using Exiled.Events.EventArgs.Player;
 using PlayerRoles;
 using System;
-using System.Diagnostics;
 
 namespace HitMarkers
 {
@@ -19,8 +18,16 @@ namespace HitMarkers
             if (ev.Attacker.Role.Team == Team.SCPs && _config.EnableScpHints == false)
                 return;
 
-            string attackerHintBuilder = _config.HintAttackerMessage.Replace("%TargetName%", ev.Player.Nickname).Replace("%TargetRole%", ev.Player.Role.ToString()).Replace("%Damage%", Math.Round(ev.Amount).ToString()).Replace(@"\n", Environment.NewLine);
-            string targetHintBuilder = _config.HintTargetMessage.Replace("%AttackerName%", ev.Attacker.Nickname).Replace("%AttackerRole%", ev.Attacker.Role.ToString()).Replace("%Damage%", Math.Round(ev.Amount).ToString()).Replace(@"\n", Environment.NewLine);
+            string attackerHintBuilder = _config.HintAttackerMessage.Replace("%TargetName%", 
+                ev.Player.Nickname).Replace("%TargetRole%", 
+                ev.Player.Role.ToString()).Replace("%Damage%", 
+                Math.Round(ev.Amount).ToString()).Replace(@"\n", Environment.NewLine);
+            
+
+            string targetHintBuilder = _config.HintTargetMessage.Replace("%AttackerName%", 
+                ev.Attacker.Nickname).Replace("%AttackerRole%", 
+                ev.Attacker.Role.ToString()).Replace("%Damage%", 
+                Math.Round(ev.Amount).ToString()).Replace(@"\n", Environment.NewLine);
             
 
             if (_config.EnableAttackerHint)

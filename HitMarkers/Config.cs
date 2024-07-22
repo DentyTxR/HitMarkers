@@ -38,7 +38,7 @@ namespace HitMarkers
         [Description("Hint duration for kill message")]
         public float KillHintDuration { get; set; } = 1f;
 
-        [Description("Should hitmarkers be displayed to SCPs?")]
+        [Description("Should hitmarkers be displayed to SCPs? (This enables attacker and target hints but for the SCPs)")]
         public bool EnableScpHints { get; set; } = true;
 
         [Description("Size of custom hitmarker (leave 1 for default)")]
