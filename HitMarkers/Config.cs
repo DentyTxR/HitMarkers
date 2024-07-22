@@ -41,6 +41,15 @@ namespace HitMarkers
         [Description("Should hitmarkers be displayed to SCPs? (This enables attacker and target hints but for the SCPs)")]
         public bool EnableScpHints { get; set; } = true;
 
+        [Description("Should a hint be displayed to the SCP when they kill a player?")]
+        public bool EnableKillHintForScp { get; set; } = true;
+
+        [Description("Hint message for SCP kill")]
+        public string ScpKillHintMessage { get; set; } = @"<voffset=15em><size=34><color=red>\U0001F480</color></size></voffset>";
+
+        [Description("Hint duration for SCP kill message")]
+        public float ScpKillHintDuration { get; set; } = 1f;
+
         [Description("Size of custom hitmarker (leave 1 for default)")]
         public float HitMarkerSize { get; set; } = 1f;
     }

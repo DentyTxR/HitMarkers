@@ -48,6 +48,9 @@ namespace HitMarkers
 
             if (_config.EnableKillHint)
                 ev.Attacker.ShowHint(_config.KillHintMessage, _config.KillHintDuration);
+
+            if (_config.EnableKillHintForScp)
+                ev.Player.ShowHint(_config.ScpKillHintMessage, _config.ScpKillHintDuration);
         }
     }
 }
