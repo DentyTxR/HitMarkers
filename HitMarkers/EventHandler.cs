@@ -72,13 +72,12 @@ namespace HitMarkers
                 .Replace("%TargetRole%", ev.Player.Role.ToString())
                 .Replace("%KillCount%", HitMarkers.Singleton.KillCount[ev.Attacker].ToString())
                 .Replace(@"\n", Environment.NewLine);
-
-
-            if (_config.EnableKillHint)
-                ev.Attacker.ShowHint(killerHintStringBuilder, _config.KillHintDuration);
-
-            if (_config.EnableKillHintForScp)
+            
+            
+            if (_config.EnableKillHintForScp && ev.Attacker.IsScp)
                 ev.Attacker.ShowHint(scpkillHintStringBuilder, _config.ScpKillHintDuration);
+            else if (_config.EnableKillHint && !ev.Attacker.IsScp)
+                ev.Attacker.ShowHint(killerHintStringBuilder, _config.KillHintDuration);
         }
 
         public void RoundEnded(RoundEndedEventArgs ev)
