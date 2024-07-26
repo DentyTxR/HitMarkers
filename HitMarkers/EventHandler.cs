@@ -30,16 +30,13 @@ namespace HitMarkers
             if (ev.Attacker.Role.Team == Team.SCPs && _config.EnableScpHints == false)
                 return;
 
-            string attackerHintBuilder = _config.HintAttackerMessage.Replace("%TargetName%", 
-                ev.Player.Nickname).Replace("%TargetRole%", 
-                ev.Player.Role.ToString()).Replace("%Damage%", 
-                Math.Round(ev.Amount).ToString()).Replace(@"\n", Environment.NewLine);
-            
+            string attackerHintBuilder = _config.HintAttackerMessage.Replace("%TargetName%", ev.Player.Nickname)
+                .Replace("%TargetRole%", ev.Player.Role.ToString())
+                .Replace("%Damage%", Math.Round(ev.Amount).ToString()).Replace(@"\n", Environment.NewLine);
 
-            string targetHintBuilder = _config.HintTargetMessage.Replace("%AttackerName%", 
-                ev.Attacker.Nickname).Replace("%AttackerRole%", 
-                ev.Attacker.Role.ToString()).Replace("%Damage%", 
-                Math.Round(ev.Amount).ToString()).Replace(@"\n", Environment.NewLine);
+            string targetHintBuilder = _config.HintTargetMessage.Replace("%AttackerName%", ev.Attacker.Nickname)
+                .Replace("%AttackerRole%", ev.Attacker.Role.ToString())
+                .Replace("%Damage%", Math.Round(ev.Amount).ToString()).Replace(@"\n", Environment.NewLine);
             
 
             if (_config.EnableAttackerHint)
@@ -60,11 +57,20 @@ namespace HitMarkers
             if (HitMarkers.Singleton.KillCount.ContainsKey(ev.Attacker))
                 HitMarkers.Singleton.KillCount[ev.Attacker]++;
 
+            string killerHintStringBuilder = _config.KillHintMessage.Replace("%TargetName%", ev.Player.Nickname)
+                .Replace("%TargetRole%", ev.Player.Role.ToString())
+                .Replace(@"\n", Environment.NewLine);
+
+            string scpkillHintStringBuilder = _config.KillHintMessage.Replace("%TargetName%", ev.Player.Nickname)
+                .Replace("%TargetRole%", ev.Player.Role.ToString())
+                .Replace(@"\n", Environment.NewLine);
+
+
             if (_config.EnableKillHint)
-                ev.Attacker.ShowHint(_config.KillHintMessage, _config.KillHintDuration);
+                ev.Attacker.ShowHint(killerHintStringBuilder, _config.KillHintDuration);
 
             if (_config.EnableKillHintForScp)
-                ev.Player.ShowHint(_config.ScpKillHintMessage, _config.ScpKillHintDuration);
+                ev.Attacker.ShowHint(scpkillHintStringBuilder, _config.ScpKillHintDuration);
         }
 
         public void RoundEnded(RoundEndedEventArgs ev)
