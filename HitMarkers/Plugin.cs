@@ -26,16 +26,21 @@ namespace HitMarkers
             Singleton = this;
             EventHandler = new EventHandler();
 
+            PlayerHandler.Verified += EventHandler.VerifiedEvent;
             PlayerHandler.Hurting += EventHandler.HurtingEvent;
             PlayerHandler.Dying += EventHandler.DyingEvent;
+            ServerHandler.RoundEnded += EventHandler.RoundEnded;
+            
             base.OnEnabled();
         }
 
 
         public override void OnDisabled()
         {
+            PlayerHandler.Verified -= EventHandler.VerifiedEvent;
             PlayerHandler.Hurting -= EventHandler.HurtingEvent;
             PlayerHandler.Dying -= EventHandler.DyingEvent;
+            ServerHandler.RoundEnded -= EventHandler.RoundEnded;
 
             EventHandler = null;
             Singleton = null;

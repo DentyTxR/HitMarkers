@@ -13,6 +13,7 @@
   - Show custom hint to target (custom duration, custom message w variables)
   - Show hints to SCPs (just shows the custom attacker/target to SCPs)
   - Custom kill hint for SCPs
+  - Kill count tracker (variable for kill hints)
 
 
 
