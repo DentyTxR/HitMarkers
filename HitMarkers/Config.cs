@@ -14,6 +14,9 @@ namespace HitMarkers
         [Description("Should a hint be displayed to the attacker?")]
         public bool EnableAttackerHint { get; set; } = true;
 
+        [Description("Should a hint be displayed to the SCP attacker? (If the attacker is a scp and should get the HintAttackerMessage)")]
+        public bool EnableScpAttackerHint { get; set; } = true;
+
         [Description("Hint message for attacker")]
         public string HintAttackerMessage { get; set; } = @"<voffset=17em><size=20>%Damage%</size></voffset>";
 
@@ -37,9 +40,6 @@ namespace HitMarkers
 
         [Description("Hint duration for kill message")]
         public float KillHintDuration { get; set; } = 1f;
-
-        [Description("Should hitmarkers be displayed to SCPs? (This enables attacker and target hints but for the SCPs)")]
-        public bool EnableScpHints { get; set; } = true;
 
         [Description("Should a hint be displayed to the SCP when they kill a player?")]
         public bool EnableKillHintForScp { get; set; } = true;

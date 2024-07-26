@@ -31,10 +31,6 @@ namespace HitMarkers
             if (_config.HitMarkerSize > 1)
                 ev.Attacker.ShowHitMarker(_config.HitMarkerSize);
 
-
-            if (ev.Attacker.Role.Team == Team.SCPs && _config.EnableScpHints == false)
-                return;
-
             string attackerHintBuilder = _config.HintAttackerMessage
                 .Replace("%TargetName%", ev.Player.Nickname)
                 .Replace("%TargetRole%", ev.Player.Role.ToString())
@@ -44,9 +40,11 @@ namespace HitMarkers
                 .Replace("%AttackerName%", ev.Attacker.Nickname)
                 .Replace("%AttackerRole%", ev.Attacker.Role.ToString())
                 .Replace("%Damage%", Math.Round(ev.Amount).ToString()).Replace(@"\n", Environment.NewLine);
-            
 
-            if (_config.EnableAttackerHint)
+
+            if (_config.EnableScpAttackerHint && ev.Attacker.IsScp)
+                ev.Attacker.ShowHint(attackerHintBuilder, _config.HintAttackerDuration);
+            else if (_config.EnableAttackerHint && !ev.Attacker.IsScp)
                 ev.Attacker.ShowHint(attackerHintBuilder, _config.HintAttackerDuration);
 
             if (_config.EnableTargetHint)
