@@ -27,6 +27,11 @@ namespace HitMarkers
                 return;
             if (!ev.IsAllowed || ev.Amount < 0 || ev.Attacker == ev.Player)
                 return;
+
+            if (_config.HitMarkerSize > 1)
+                ev.Attacker.ShowHitMarker(_config.HitMarkerSize);
+
+
             if (ev.Attacker.Role.Team == Team.SCPs && _config.EnableScpHints == false)
                 return;
 
@@ -46,9 +51,6 @@ namespace HitMarkers
 
             if (_config.EnableTargetHint)
                 ev.Player.ShowHint(targetHintBuilder, _config.HintTargetDuration);
-
-            if (_config.HitMarkerSize > 1)
-                ev.Attacker.ShowHitMarker(_config.HitMarkerSize);
         }
 
         public void DyingEvent(DyingEventArgs ev)
