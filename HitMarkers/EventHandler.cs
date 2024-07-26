@@ -62,11 +62,13 @@ namespace HitMarkers
             string killerHintStringBuilder = _config.KillHintMessage
                 .Replace("%TargetName%", ev.Player.Nickname)
                 .Replace("%TargetRole%", ev.Player.Role.ToString())
+                .Replace("%KillCount%", HitMarkers.Singleton.KillCount[ev.Attacker].ToString())
                 .Replace(@"\n", Environment.NewLine);
 
             string scpkillHintStringBuilder = _config.ScpKillHintMessage
                 .Replace("%TargetName%", ev.Player.Nickname)
                 .Replace("%TargetRole%", ev.Player.Role.ToString())
+                .Replace("%KillCount%", HitMarkers.Singleton.KillCount[ev.Attacker].ToString())
                 .Replace(@"\n", Environment.NewLine);
 
 

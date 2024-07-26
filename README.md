@@ -75,3 +75,19 @@ These are for `hint_target_message` config
 | `%AttackerRole%` | Attacker role |
 | `%Damage%` | Damage delt |
 | `\n` | Makes a linebreak in the hint |
+
+These are for `kill_hint_message` config
+| Variable Name | Returns |
+| --- | --- |
+| `%TargetName%` | Target username |
+| `%TargetRole%` | Target role |
+| `%KillCount%` | Total kills killer has |
+| `\n` | Makes a linebreak in the hint |
+
+These are for `scp_kill_hint_message` config
+| Variable Name | Returns |
+| --- | --- |
+| `%TargetName%` | Target username |
+| `%TargetRole%` | Target role |
+| `%KillCount%` | Total kills killer has |
+| `\n` | Makes a linebreak in the hint |
