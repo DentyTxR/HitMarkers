@@ -1,4 +1,6 @@
-﻿using Exiled.Events.EventArgs.Player;
+﻿using Exiled.API.Features;
+using Exiled.Events.EventArgs.Player;
+using Exiled.Events.EventArgs.Server;
 using PlayerRoles;
 using System;
 
@@ -8,13 +10,23 @@ namespace HitMarkers
     {
         Config _config = HitMarkers.Singleton.Config;
 
+        public void VerifiedEvent(VerifiedEventArgs ev)
+        {
+            if (ev.Player.DoNotTrack)
+            {
+                Log.Debug($"{ev.Player.UserId} has DNT enabled, Not adding to kill tracker");
+            } else if (!ev.Player.DoNotTrack && !HitMarkers.Singleton.KillCount.ContainsKey(ev.Player))
+            {
+                HitMarkers.Singleton.KillCount.Add(ev.Player, 0);
+            }
+        }
+
         public void HurtingEvent(HurtingEventArgs ev)
         {
             if (ev.Attacker == null || ev.Player == null)
                 return;
             if (!ev.IsAllowed || ev.Amount < 0 || ev.Attacker == ev.Player)
                 return;
-
             if (ev.Attacker.Role.Team == Team.SCPs && _config.EnableScpHints == false)
                 return;
 
@@ -45,12 +57,20 @@ namespace HitMarkers
             if (ev.Attacker == null || ev.Player == null || ev.Attacker == ev.Player)
                 return;
 
+            if (HitMarkers.Singleton.KillCount.ContainsKey(ev.Attacker))
+                HitMarkers.Singleton.KillCount[ev.Attacker]++;
 
             if (_config.EnableKillHint)
                 ev.Attacker.ShowHint(_config.KillHintMessage, _config.KillHintDuration);
 
             if (_config.EnableKillHintForScp)
                 ev.Player.ShowHint(_config.ScpKillHintMessage, _config.ScpKillHintDuration);
+        }
+
+        public void RoundEnded(RoundEndedEventArgs ev)
+        {
+            HitMarkers.Singleton.KillCount.Clear();
+            Log.Debug("Cleared kills");
         }
     }
 }

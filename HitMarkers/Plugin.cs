@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Exiled.API.Features;
-using Player = Exiled.Events.Handlers.Player;
-
+using PlayerHandler = Exiled.Events.Handlers.Player;
+using ServerHandler = Exiled.Events.Handlers.Server;
+using Player = Exiled.API.Features.Player;
 namespace HitMarkers
 {
 
@@ -14,26 +16,26 @@ namespace HitMarkers
         public override string Name { get; } = "HitMarkers";
         public override string Author { get; } = "Denty";
         public override string Prefix { get; } = "HitMarkers";
-        public override Version Version { get; } = new Version(1, 1, 1);
-        public override Version RequiredExiledVersion { get; } = new Version(6, 0, 0);
+        public override Version Version { get; } = new Version(1, 2, 0);
+        public override Version RequiredExiledVersion { get; } = new Version(8, 0, 0);
 
+        public Dictionary<Player, int> KillCount = new Dictionary<Player, int>();
 
         public override void OnEnabled()
         {
             Singleton = this;
             EventHandler = new EventHandler();
 
-            Player.Hurting += EventHandler.HurtingEvent;
-            Player.Dying += EventHandler.DyingEvent;
-
+            PlayerHandler.Hurting += EventHandler.HurtingEvent;
+            PlayerHandler.Dying += EventHandler.DyingEvent;
             base.OnEnabled();
         }
 
 
         public override void OnDisabled()
         {
-            Player.Hurting -= EventHandler.HurtingEvent;
-            Player.Dying -= EventHandler.DyingEvent;
+            PlayerHandler.Hurting -= EventHandler.HurtingEvent;
+            PlayerHandler.Dying -= EventHandler.DyingEvent;
 
             EventHandler = null;
             Singleton = null;
