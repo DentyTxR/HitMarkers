@@ -30,11 +30,13 @@ namespace HitMarkers
             if (ev.Attacker.Role.Team == Team.SCPs && _config.EnableScpHints == false)
                 return;
 
-            string attackerHintBuilder = _config.HintAttackerMessage.Replace("%TargetName%", ev.Player.Nickname)
+            string attackerHintBuilder = _config.HintAttackerMessage
+                .Replace("%TargetName%", ev.Player.Nickname)
                 .Replace("%TargetRole%", ev.Player.Role.ToString())
                 .Replace("%Damage%", Math.Round(ev.Amount).ToString()).Replace(@"\n", Environment.NewLine);
 
-            string targetHintBuilder = _config.HintTargetMessage.Replace("%AttackerName%", ev.Attacker.Nickname)
+            string targetHintBuilder = _config.HintTargetMessage
+                .Replace("%AttackerName%", ev.Attacker.Nickname)
                 .Replace("%AttackerRole%", ev.Attacker.Role.ToString())
                 .Replace("%Damage%", Math.Round(ev.Amount).ToString()).Replace(@"\n", Environment.NewLine);
             
@@ -57,11 +59,13 @@ namespace HitMarkers
             if (HitMarkers.Singleton.KillCount.ContainsKey(ev.Attacker))
                 HitMarkers.Singleton.KillCount[ev.Attacker]++;
 
-            string killerHintStringBuilder = _config.KillHintMessage.Replace("%TargetName%", ev.Player.Nickname)
+            string killerHintStringBuilder = _config.KillHintMessage
+                .Replace("%TargetName%", ev.Player.Nickname)
                 .Replace("%TargetRole%", ev.Player.Role.ToString())
                 .Replace(@"\n", Environment.NewLine);
 
-            string scpkillHintStringBuilder = _config.KillHintMessage.Replace("%TargetName%", ev.Player.Nickname)
+            string scpkillHintStringBuilder = _config.ScpKillHintMessage
+                .Replace("%TargetName%", ev.Player.Nickname)
                 .Replace("%TargetRole%", ev.Player.Role.ToString())
                 .Replace(@"\n", Environment.NewLine);
 
